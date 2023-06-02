@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Biblioteca
 
 Foobar is a Python library for dealing with word pluralization.
@@ -35,3 +36,6 @@ Please make sure to update tests as appropriate.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+=======
+# Biblioteca
+>>>>>>> 2d3e8175602b386dc2b290634ffbed279add4cfe
