@@ -1,5 +1,13 @@
+import dataAccess.ConexionBD;
+import dataAccess.DaoUsuario;
+import gui.Login;
+
+import java.sql.Connection;
+
 public class Main {
     public static void main (String [ ] args) {
-        System.out.println ("Empezamos la ejecución del programa");
+        Login login = new Login();
+        login.loginUI();
+        System.out.println(DaoUsuario.existeUsuario("USU0001"));
     }
 }
