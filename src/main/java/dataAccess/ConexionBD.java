@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import static Util.Constantes.*;
+
 public class ConexionBD {
     private Connection connection;
     private final String url = "jdbc:postgresql://localhost:5432/BIBLIOTECA"; // Cambia "nombre_basedatos" por el nombre de tu base de datos
@@ -20,9 +22,9 @@ public class ConexionBD {
 
             System.out.println("Conexión establecida correctamente");
         } catch (ClassNotFoundException e) {
-            System.err.println("Error al cargar el controlador JDBC: " + e.getMessage());
+            System.err.println(ERROR_CARGA_CONTROLADOR_JDBC + e.getMessage());
         } catch (SQLException e) {
-            System.err.println("Error al establecer la conexión: " + e.getMessage());
+            System.err.println(ERROR_DE_CONEXION + e.getMessage());
         }
     }
 
@@ -37,7 +39,7 @@ public class ConexionBD {
                 System.out.println("Conexión cerrada correctamente");
             }
         } catch (SQLException e) {
-            System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            System.err.println(ERROR_DE_CIERRE_DE_CONEXION + e.getMessage());
         }
     }
 
