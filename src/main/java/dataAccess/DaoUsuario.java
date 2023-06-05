@@ -33,7 +33,6 @@ public class DaoUsuario {
                 // Ejecutar la sentencia SQL
                 filasAfectadas = statement.executeUpdate();
 
-                System.out.println("Filas afectadas: " + filasAfectadas);
             }
             catch (SQLException e){System.err.println(ERROR_SENTENCIA_SQL + e.getMessage());}
             catch(Exception e){ System.out.println(e); }
@@ -65,7 +64,6 @@ public class DaoUsuario {
                 if (resultSet.next()) {
                     // Obtener el valor del campo "nombre_usuario"
                     nombreUsuario = resultSet.getString("nombre_usuario");
-                    System.out.println("Nombre de usuario: " + nombreUsuario);
                 } else {
                     System.out.println(NO_SE_ENCONTRO_USUARIO + idUsuario);
                 }
@@ -107,8 +105,6 @@ public class DaoUsuario {
                     if (total > 0) {
                         existe = true;
                     }
-
-                    System.out.println("¿Existe el usuario? " + existe);
                 }
 
                 resultSet.close();
@@ -123,4 +119,43 @@ public class DaoUsuario {
         return existe;
     }
 
+    public Usuario obtenerUsuarioPorID(String idUsuario) {
+        Usuario usuario = new Usuario();
+        String sql_consulta = "SELECT * FROM usuario WHERE id_usuario = ?";
+
+        // Obtener la conexión
+        ConexionBD conexion = new ConexionBD();
+        conexion.openConnection();
+        Connection connection = conexion.getConnection();
+
+        if (connection != null) {
+            try (PreparedStatement statement = connection.prepareStatement(sql_consulta)) {
+                // Establecer el valor del parámetro en la sentencia SQL
+                statement.setString(1, idUsuario);
+
+                // Ejecutar la consulta
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+                    // Obtener los valores de las columnas y asignarlos al objeto Usuario
+                    usuario.setIdUsuario(resultSet.getString("id_usuario"));
+                    usuario.setPasswordUsuario(resultSet.getString("password_usuario"));
+                    usuario.setNombreUsuario(resultSet.getString("nombre_usuario"));
+                    usuario.setTelUsuario(resultSet.getString("tel_usuario"));
+                    usuario.setDirUsuario(resultSet.getString("dir_usuario"));
+                    usuario.setEmailUsuario(resultSet.getString("email_usuario"));
+
+                }
+
+                resultSet.close();
+            } catch (SQLException e) {
+                System.err.println("Error al ejecutar la consulta: " + e.getMessage());
+            } finally {
+                // Cerrar la conexión
+                conexion.closeConnection();
+            }
+        }
+
+        return usuario;
+    }
 }

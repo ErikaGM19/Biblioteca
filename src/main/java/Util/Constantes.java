@@ -11,5 +11,13 @@ public class Constantes {
     public static final String SELECCIONA_OPCION = "Selecciona una opción" ;
     public static final String REGISTRAR_USUARIO = "Registrar Usuario" ;
     public static final String REGISTRAR_EMPLEADO = "Registrar Empleado" ;
+    public static final String REGISTRO_USUARIO_EXISTOSO = "Usuario Registrado con exito";
+    public static final String REGISTRO_EMPLEADO_EXISTOSO = "Empleado Registrado con exito";
+    public static final String OTRO_REGISTRO = "¿Desea realizar otro registro?";
+    public static final String USUARIO_YA_EXISTE = "El Usuario ya existe";
+    public static final String EMPLEADO_YA_EXISTE = "El Usuario ya existe";
+    public static final String VALIDAR_CAMPOS = "Debes llenar todos los campos";
+    public static final String VERIFICAR_DATOS = "Debes verificar que la identificación y contraseña sean correctos";
+    public static final String BIENVENIDO = "Bienvenido ";
 
 }

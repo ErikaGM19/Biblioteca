@@ -20,7 +20,6 @@ public class ConexionBD {
             // Establece la conexión con la base de datos
             connection = DriverManager.getConnection(url, username, password);
 
-            System.out.println("Conexión establecida correctamente");
         } catch (ClassNotFoundException e) {
             System.err.println(ERROR_CARGA_CONTROLADOR_JDBC + e.getMessage());
         } catch (SQLException e) {
@@ -36,7 +35,6 @@ public class ConexionBD {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
-                System.out.println("Conexión cerrada correctamente");
             }
         } catch (SQLException e) {
             System.err.println(ERROR_DE_CIERRE_DE_CONEXION + e.getMessage());
