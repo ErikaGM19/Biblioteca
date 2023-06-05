@@ -114,7 +114,8 @@ public class Login extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 ventana.dispose(); // Cierra la ventana actual
 
-                JOptionPane.showMessageDialog(null, "en construccion xD");
+                Register register = new Register();
+                register.RegisterUI();
             }
         });
 

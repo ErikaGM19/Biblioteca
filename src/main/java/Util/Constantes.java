@@ -8,4 +8,8 @@ public class Constantes {
     public static final String ERROR_DE_CIERRE_DE_CONEXION = "Error al cerrar la conexión: ";
     public static final String NO_SE_ENCONTRO_USUARIO = "No se encontró el usuario con ID: " ;
     public static final String NO_SE_ENCONTRO_EMPLEADO = "No se encontró el empleado con ID: " ;
+    public static final String SELECCIONA_OPCION = "Selecciona una opción" ;
+    public static final String REGISTRAR_USUARIO = "Registrar Usuario" ;
+    public static final String REGISTRAR_EMPLEADO = "Registrar Empleado" ;
+
 }
