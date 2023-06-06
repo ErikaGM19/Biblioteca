@@ -1,4 +1,5 @@
 package gui;
+import controlador.ControladorLogin;
 import dataAccess.DaoEmpleado;
 import dataAccess.DaoUsuario;
 import gui.EmployeeUI.EmployeeUI;
@@ -21,34 +22,13 @@ public class Login extends JFrame {
     private JTextField identification;
     private JLabel passwordLabel;
     private JPasswordField password;
-    private JLabel selecRadioText;
+    private JLabel selecRadioText; // Para seleccionar si es usuario o empleado
     private JLabel userRadioButtonLabel;
     private JRadioButton userRadioButton;
     private JLabel employeeRadioButtonLabel;
     private JRadioButton employeeRadioButton;
     private JButton loginButton;
     private JLabel createUserLabel;
-
-    public boolean validarPasswordUsuario(String idUser, String pass){
-        boolean result = false;
-        DaoUsuario daoUsuario = new DaoUsuario();
-        Usuario usuario = daoUsuario.obtenerUsuarioPorID(idUser);
-        String password = usuario.getPasswordUsuario();
-        if (pass.equals(password)){
-            result = true;
-        }
-        return result;
-    }
-    public boolean validarPasswordEmpleado(String idEmpleado, String pass){
-        boolean result = false;
-        DaoEmpleado daoEmpleado = new DaoEmpleado();
-        Empleado empleado = daoEmpleado.obtenerEmpleadoPorID(idEmpleado);
-        String password = empleado.getPasswordEmpleado();
-        if (pass.equals(password)){
-            result = true;
-        }
-        return result;
-    }
 
 
     public void loginUI() {
@@ -122,7 +102,7 @@ public class Login extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String idUser = identification.getText().replace(" ","");
+                String idUser = identification.getText().replace(" ",""); // replacement, si deja un espacio en blanco se lo quita
                 char[] passwordChars = password.getPassword();
                 String pass = new String(passwordChars);
 
@@ -132,32 +112,7 @@ public class Login extends JFrame {
                 // y se le pasaran los parametros a algun metodo en controladorLogin para que valide por cual
                 // ruta de interfaz irse dependiendo de cual esta en true si isUserSelected o isEmployeeSelected
 
-                if(!idUser.isEmpty() && !pass.isEmpty()){
-                    if(isUserSelected){
-                        if(validarPasswordUsuario(idUser, pass )) {
-                            ventana.dispose();
-                            String nombreUsuario = DaoUsuario.obtenerNombreUsuarioPorID(idUser);
-                            JOptionPane.showMessageDialog(null, BIENVENIDO+nombreUsuario);
-                            UserUI userUI = new UserUI();
-                            userUI.ventanaUser(idUser);
-                        }else{
-                            JOptionPane.showMessageDialog(null, VERIFICAR_DATOS);
-                        }
-                    }else{
-                        if(validarPasswordEmpleado(idUser, pass)) {
-                            ventana.dispose();
-                            String nombreEmpleado = DaoEmpleado.obtenerNombreEmpleadoPorID(idUser);
-                            JOptionPane.showMessageDialog(null, BIENVENIDO+nombreEmpleado);
-                            EmployeeUI employeeUI = new EmployeeUI();
-                            employeeUI.ventanaEmployee(idUser);
-                        }else{
-                            JOptionPane.showMessageDialog(null, VERIFICAR_DATOS);
-                        }
-                    }
-
-                }else{
-                    JOptionPane.showMessageDialog(null, VALIDAR_CAMPOS);
-                }
+                ControladorLogin.loginController(idUser, pass, isUserSelected, ventana);
 
             }
         });

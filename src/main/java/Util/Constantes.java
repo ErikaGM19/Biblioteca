@@ -15,7 +15,7 @@ public class Constantes {
     public static final String REGISTRO_EMPLEADO_EXISTOSO = "Empleado Registrado con exito";
     public static final String OTRO_REGISTRO = "¿Desea realizar otro registro?";
     public static final String USUARIO_YA_EXISTE = "El Usuario ya existe";
-    public static final String EMPLEADO_YA_EXISTE = "El Usuario ya existe";
+    public static final String EMPLEADO_YA_EXISTE = "El Empleado ya existe";
     public static final String VALIDAR_CAMPOS = "Debes llenar todos los campos";
     public static final String VERIFICAR_DATOS = "Debes verificar que la identificación y contraseña sean correctos";
     public static final String BIENVENIDO = "Bienvenido ";

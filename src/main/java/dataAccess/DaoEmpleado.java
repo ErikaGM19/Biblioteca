@@ -107,8 +107,6 @@ public class DaoEmpleado {
                     if (total > 0) {
                         existe = true;
                     }
-
-                    System.out.println("¿Existe el empleado? " + existe);
                 }
 
                 resultSet.close();
