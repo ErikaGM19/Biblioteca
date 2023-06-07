@@ -74,7 +74,7 @@ public class Register {
 
         //idUsuario
         identificationLabel = new JLabel("Identificación:");
-        identificationLabel.setBounds(90, 90, 80, 30);
+        identificationLabel.setBounds(90, 90, 100, 30);
         ventana.add(identificationLabel);
 
         identification = new JTextField();
@@ -218,7 +218,7 @@ public class Register {
 
         //idEmpleado
         identificationLabel = new JLabel("Identificación:");
-        identificationLabel.setBounds(90, 90, 80, 30);
+        identificationLabel.setBounds(90, 90, 100, 30);
         ventana.add(identificationLabel);
 
         identification = new JTextField();
@@ -237,7 +237,7 @@ public class Register {
 
         //nombre empleado
         nombreEmpleadoLabel = new JLabel("Nombre empleado:");
-        nombreEmpleadoLabel.setBounds(90, 190, 110, 30);
+        nombreEmpleadoLabel.setBounds(90, 190, 130, 30);
         ventana.add(nombreEmpleadoLabel);
 
         nombreEmpleado = new JTextField();

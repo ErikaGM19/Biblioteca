@@ -46,7 +46,7 @@ public class Login extends JFrame {
 
         //idUsuario
         identificationLabel = new JLabel("Identificación:");
-        identificationLabel.setBounds(90, 110, 80, 30);
+        identificationLabel.setBounds(90, 110, 110, 30);
         ventana.add(identificationLabel);
 
         identification = new JTextField();
@@ -89,7 +89,7 @@ public class Login extends JFrame {
 
         // boton login
         loginButton = new JButton("Entrar");
-        loginButton.setBounds(205, 310, 70, 30);
+        loginButton.setBounds(193, 310, 100, 30);
         ventana.add(loginButton);
 
         //registrarse
