@@ -2,8 +2,6 @@ package gui;
 
 import dataAccess.DaoEmpleado;
 import dataAccess.DaoUsuario;
-import logica.Empleado;
-import logica.Usuario;
 
 import javax.swing.*;
 
@@ -12,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Util.Constantes.*;
+import static controlador.ControladorRegister.*;
 
 public class Register {
 
@@ -57,8 +56,8 @@ public class Register {
        telUsuario.setText("");
        dirUsuario.setText("");
        emailUsuario.setText("");
-
     }
+
     public void userRegisterUI(){
         // Crear la ventana principal y configurarla
         JFrame ventana = new JFrame("Login Sistema de Biblioteca -> Registro de Usuario");
@@ -152,17 +151,7 @@ public class Register {
                 String emailUsr = emailUsuario.getText();
                 if(!idUser.isEmpty() && !pass.isEmpty() && !nomUsuario.isEmpty() && !telUsr.isEmpty() && !dirUsr.isEmpty() && !emailUsr.isEmpty()) {
                     if(!DaoUsuario.existeUsuario(idUser)){
-                        Usuario registroUsuario = new Usuario();
-                        registroUsuario.setIdUsuario(idUser);
-                        registroUsuario.setPasswordUsuario(pass);
-                        registroUsuario.setNombreUsuario(nomUsuario);
-                        registroUsuario.setTelUsuario(telUsr);
-                        registroUsuario.setDirUsuario(dirUsr);
-                        registroUsuario.setEmailUsuario(emailUsr);
-                        DaoUsuario.guardarUsuario(registroUsuario);
-                        if (DaoUsuario.existeUsuario(idUser)) {
-                            JOptionPane.showMessageDialog(null, REGISTRO_USUARIO_EXISTOSO);
-                        }
+                        UserRegisterController(idUser, pass, nomUsuario, telUsr, dirUsr, emailUsr);
                         limpiarCamposUsuario();
 
                         //0 yes - 1 no
@@ -191,7 +180,6 @@ public class Register {
                 login.loginUI();
             }
         });
-
 
         // Mostrar la ventana
         ventana.setVisible(true);
@@ -277,16 +265,7 @@ public class Register {
 
                 if(!idEmployee.isEmpty() && !pass.isEmpty() && !nomEmpleado.isEmpty() && !cargoEmployee.isEmpty()) {
                     if(!DaoEmpleado.existeEmpleado(idEmployee)) {
-                        Empleado registroEmpleado = new Empleado();
-                        registroEmpleado.setIdEmpleado(idEmployee);
-                        registroEmpleado.setPasswordEmpleado(pass);
-                        registroEmpleado.setNombreEmpleado(nomEmpleado);
-                        registroEmpleado.setCargoEmpleado(cargoEmployee);
-                        DaoEmpleado.guardarEmpleado(registroEmpleado);
-                        if (DaoEmpleado.existeEmpleado(idEmployee)) {
-                            JOptionPane.showMessageDialog(null, REGISTRO_EMPLEADO_EXISTOSO);
-                        }
-
+                        EmployeeRegisterController(idEmployee, pass, nomEmpleado, cargoEmployee);
                         limpiarCamposEmpleado();
                         //0 yes - 1 no
                         int confirm = JOptionPane.showConfirmDialog(null, OTRO_REGISTRO,
